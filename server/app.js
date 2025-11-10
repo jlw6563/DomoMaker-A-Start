@@ -13,10 +13,10 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 const dbURI = process.env.MONGODB_URI || 'mongodb://localhost/DomoMaker';
 mongoose.connect(dbURI).catch((err) => {
-    if (err) {
-        console.log('Could not connect to the database');
-        throw err;
-    }
+  if (err) {
+    console.log('Could not connect to the database');
+    throw err;
+  }
 });
 
 const app = express();
@@ -29,10 +29,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(session({
-    key: 'sessionid',
-    secret: 'Domo Arigato',
-    resave: false,
-    saveUninitialized: false,
+  key: 'sessionid',
+  secret: 'Domo Arigato',
+  resave: false,
+  saveUninitialized: false,
 }));
 
 app.engine('handlebars', expressHandlebars.engine({ defaultLayout: '' }));
@@ -42,6 +42,6 @@ app.set('views', `${__dirname}/../views`);
 router(app);
 
 app.listen(port, (err) => {
-    if (err) { throw err; }
-    console.log(`Listening on port ${port}`);
+  if (err) { throw err; }
+  console.log(`Listening on port ${port}`);
 });
